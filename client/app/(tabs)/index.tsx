@@ -133,10 +133,30 @@ export default function Home() {
           ) : (
             <View className="flex-row flex-wrap justify-between">
               {products.slice(0, 4).map((product) => (
-                <ProductCard key={product._id} product={product}/>
+                <ProductCard key={product._id} product={product} />
               ))}
             </View>
           )}
+        </View>
+
+        {/* News letter CTA */}
+        <View className="bg-gray-100 px-6 py-8 rounded-2xl mb-20 items-center ">
+          <Text className="text-2xl font-bold text-center mb-2 text-gray-900">
+            Join the Revolution
+          </Text>
+
+          <Text className="text-center mb-6 text-gray-600 leading-5">
+            Subscribe to our newsletter and get 10% off your first purchase.
+          </Text>
+
+          <TouchableOpacity
+            activeOpacity={0.8}
+            className="bg-primary w-4/5 py-3 rounded-full items-center"
+          >
+            <Text className="text-white font-semibold text-base">
+              Subscribe Now
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
