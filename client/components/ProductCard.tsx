@@ -4,9 +4,12 @@ import { ProductCardProps } from "@/constants/types";
 import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "@/constants";
+import { useWishlist } from "@/context/WishlistContext";
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const isLiked = true;
+  const { toggleWishlist, isInWishlist } = useWishlist();
+
+  const isLiked = isInWishlist(product._id);
   return (
     <Link
       href={{
@@ -18,7 +21,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <TouchableOpacity className="w-[48%] mb-4 bg-white rounded-lg overflow-hidden">
         <View className="relative w-full aspect-[3/4] bg-gray-100">
           <Image
-            source={{ uri: product.images?.[0] }}
+            source={{ uri: product.images?.[0] ?? "" }}
             className="w-full h-full"
             resizeMode="cover"
           />
@@ -27,6 +30,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             className="absolute top-2 right-2 z-10 p-2 bg-white rounded-full shadow-sm"
             onPress={(e) => {
               e.stopPropagation();
+              toggleWishlist(product);
             }}
           >
             <Ionicons
@@ -60,7 +64,9 @@ export default function ProductCard({ product }: ProductCardProps) {
           </Text>
 
           <View className="flex-row items-center">
-            <Text className="text-primary font-bold text-base">${product.price.toFixed(2)}</Text>
+            <Text className="text-primary font-bold text-base">
+              ${product.price.toFixed(2)}
+            </Text>
           </View>
         </View>
       </TouchableOpacity>
