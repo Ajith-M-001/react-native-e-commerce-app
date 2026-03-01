@@ -13,7 +13,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
       href={{
-        pathname: "/product/[id]",
+        pathname: "/Product/[id]",
         params: { id: product._id },
       }}
       asChild
