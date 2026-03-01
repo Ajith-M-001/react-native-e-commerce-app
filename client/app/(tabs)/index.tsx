@@ -124,7 +124,7 @@ export default function Home() {
         <View className="mb-8">
           <View className="flex-row justify-between items-center mb-4">
             <Text className="text-xl font-bold text-primary">Popular</Text>
-            <TouchableOpacity onPress={() => router.push("/shop")}>
+            <TouchableOpacity onPress={() => router.push("/Shop")}>
               <Text className="text-secondary text-sm">See All</Text>
             </TouchableOpacity>
           </View>
